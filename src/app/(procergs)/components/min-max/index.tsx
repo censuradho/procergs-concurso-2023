@@ -27,7 +27,7 @@ export function MinMax (props: MinMaxProps) {
 
   return (
     <section className={styles.min_max__root}>
-      <Box gap={1} justifyContent="space-evenly">
+      <Box gap={2} fullWidth>
         <div className={styles.min_max__item}>
           <Typography
             as="strong"
