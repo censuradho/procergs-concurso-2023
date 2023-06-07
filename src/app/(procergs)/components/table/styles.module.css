@@ -1,9 +1,9 @@
-.home {
-  padding: 60px 24px
+.table {
+  margin: 90px 0
 }
 
-.home__title {
-  font-size: 28px;
+.table__title {
+  font-size: 18px;
   font-weight: 500;
 }
 
