@@ -1,10 +1,31 @@
 .min_max__root {
   background-color: var(--ancesst-1);
-  padding: 1rem;
+  padding: 2rem 1rem;
   color: var(--background);
   border-radius: var(--border-radius);
+  display: grid;
+  gap: 2rem;
+  width: max-content
 }
 
-.min_max__title {
-  font-size: 1.25rem;
+.min_max__item {
+  border: 2px solid var(--background);
+  padding: 0.5rem;
+  max-width: max-content;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.min_max__item--secondary {
+  background-color: var(--primary);
+  border: 0px
+}
+
+.min_max__percent {
+  font-size: 36px;
+  font-weight: 600;
 }

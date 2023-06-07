@@ -8,6 +8,13 @@ export const appSettings = {
   madeBy: {
     link: process.env.NEXT_PUBLIC_MADE_BY_LINK,
     label: process.env.NEXT_PUBLIC_MADE_BY_LABEL,
+  },
+  rules: {
+    grade: {
+      portugues: 5,
+      legislacao: 5,
+      especificas: 20,
+    }
   }
 } 
 

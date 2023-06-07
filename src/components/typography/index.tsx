@@ -7,7 +7,8 @@ export function Typography<T extends React.ElementType = 'span'> (props: PropsWi
     as,
     children,
     color = 'ancesst1',
-    size = 'xsm'
+    size = 'xsm',
+    fontWeight = 500
   } = props
 
   const Component = as || 'span'
@@ -16,7 +17,8 @@ export function Typography<T extends React.ElementType = 'span'> (props: PropsWi
     <Component
       style={{
         color: theme.colors[color],
-        fontSize: theme.fontSizes[size]
+        fontSize: theme.fontSizes[size],
+        fontWeight
       }}
     >{children}</Component>
   )

@@ -19,8 +19,10 @@ export default async function Page  () {
       <div className="container">
         <h1 className={styles.home__title}>PROCERGS Concurso 2023</h1>
         <strong className={styles.home__subtitle}>Analista em Computação / ênfase em Desenvolvimento Front-End</strong>
-        <MinMax data={dataAddClassification} />
-        <Table data={dataAddClassification} />
+        <Box marginTop={4} flexDirection="column" gap={2} alignItems="flex-start">
+          <MinMax data={dataAddClassification} />
+          <Table data={dataAddClassification} />
+        </Box>
       </div>
     </main>
   )

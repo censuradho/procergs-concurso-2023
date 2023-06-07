@@ -16,6 +16,7 @@ interface BoxProps extends ViewStyle {
   maxWidth?: number
   className?: string
   gap?: number;
+  marginTop?: number
 }
 
 export function Box (props: BoxProps) {
@@ -24,6 +25,7 @@ export function Box (props: BoxProps) {
     fullWidth,
     gap,
     className,
+    marginTop,
     ...otherProps
   } = props
 
@@ -34,6 +36,7 @@ export function Box (props: BoxProps) {
         ...otherProps,
         display: 'flex',
         width: fullWidth ? '100%' : 'auto',
+        ...(marginTop && ({ marginTop: `${marginTop}rem` })),
         ...(gap && { gap: `${gap}rem` }),
       }}
     >

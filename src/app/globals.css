@@ -40,8 +40,12 @@ ul {
   list-style: none;
 }
 
-p {
+p, strong {
   line-height: 200%;
+}
+
+h1 {
+  margin-bottom: 14px;
 }
 
 h2 {
