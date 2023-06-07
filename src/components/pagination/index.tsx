@@ -1,6 +1,7 @@
 import { PaginationProps } from "./types";
 
 import styles from './styles.module.css'
+
 import { Box } from "../box";
 
 export function Pagination (props: PaginationProps) {
@@ -37,6 +38,7 @@ export function Pagination (props: PaginationProps) {
         >{backward}</button>
         <input 
           className={styles.pagination__input}
+          onChange={(event) => onPageChange(Number(event.target.value.replaceAll(/\D/g, "")))}
         />
         <button 
           className={styles.pagination__bullet} 

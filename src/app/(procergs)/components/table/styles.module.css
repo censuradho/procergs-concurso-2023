@@ -1,5 +1,7 @@
 .table__root {
-  margin: 90px 0
+  margin: 90px 0;
+  display: grid;
+  gap: 1rem
 }
 
 .table__title {

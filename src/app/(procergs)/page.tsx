@@ -5,7 +5,7 @@ import styles from './styles.module.css'
 
 export default async function Page  () {
   const { data } = await findAll()
-  
+
   const sortedByRules = sortRules(data)
 
   const dataAddClassification = sortedByRules.map((value, index) => ({
