@@ -141,16 +141,16 @@ export function Table (props: TableProps) {
     isLike(value.nome.toLocaleLowerCase(), search.toLocaleLowerCase())  
   ) : null
 
+  const _sorted = sortBy(filtered || data, (_sort as any), _order as any)
+
   const paginateData = useMemo(() => 
-    paginate((filtered || data), perPage, _page), 
+    paginate((_sorted), perPage, _page), 
   [filtered, data, _page])
 
-  const sorted = sortBy(paginateData, (_sort as any), _order as any)
-  
   const totalResults = filtered?.length || data.length
   const totalPages = Math.ceil(( totalResults || totalResults) / perPage)
 
-  const renderRows = sorted.map((value, index) => (
+  const renderRows = paginateData.map((value, index) => (
     <tr key={index}>
       <td>{value.classification}</td>
       <td>{value.nome}</td>
