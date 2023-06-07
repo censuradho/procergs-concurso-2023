@@ -1,7 +1,8 @@
 import { findAll } from '@/services/api'
 import { sortRules } from '@/utils/sortRules'
-import { Table } from './components'
+import { Search, Table } from './components'
 import styles from './styles.module.css'
+import { Box } from '@/components'
 
 export default async function Page  () {
   const { data } = await findAll()

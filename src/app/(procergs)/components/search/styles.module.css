@@ -1,0 +1,22 @@
+.search__root {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search__root input {
+  border: none;
+  outline: none;
+  background-color: var(--foreground);
+  color: var(--ancesst-1);
+  padding: 1rem 1rem 1rem 3rem
+}
+
+.search__root input::placeholder {
+  color: var(--ancesst-2)
+}
+
+.search__icon {
+  position: absolute;
+  left: 10px;
+}

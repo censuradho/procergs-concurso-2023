@@ -2,15 +2,16 @@
 import qs from 'querystring'
 
 import { Box, Icon, Pagination } from '@/components'
+import { useRouter } from 'next/navigation'
 import styles from './styles.module.css'
 import { TableProps } from './types'
-import { useRouter } from 'next/navigation';
 
-import { useSearchParams } from 'next/navigation'
 import { paths } from '@/consts/paths'
 import { paginate } from '@/utils/paginate'
-import { useState } from 'react'
-
+import { useSearchParams } from 'next/navigation'
+import { Search } from '../search'
+import { useMemo, useState } from 'react'
+import { useDebounce } from '@/hooks/useDebounce'
 
 const headers = [
   {
@@ -54,6 +55,10 @@ const baseSort = {
   order: Orders.asc
 }
 
+const isLike = (value: string, compare: string) => {
+  return value.indexOf(compare) > -1
+}
+
 
 export function sortBy <T, K extends keyof T>(data: T[], key: K, order: keyof typeof Orders) {
   return data.sort((a, b) => {
@@ -68,6 +73,7 @@ export function sortBy <T, K extends keyof T>(data: T[], key: K, order: keyof ty
   })
 }
 
+
 export function Table (props: TableProps) {
   const { data } = props
   const router = useRouter()
@@ -76,14 +82,21 @@ export function Table (props: TableProps) {
   const _page = Number(searchParams?.get('_page') || 1);
   const _order = searchParams?.get('_order') || baseSort.order
   const _sort = searchParams?.get('_sort')|| baseSort.key
+  const _defaultSearch = searchParams?.get('_search')|| ''
 
-  const totalResults = data.length
+  const [search, setSearch] = useState(_defaultSearch)
+
+  const _query = {
+    _page,
+    _order,
+  }
+
   const perPage = 10
-  const totalPages = Math.ceil(totalResults / perPage)
 
   const handleChangePage = (page: number) => {
     const query= qs.stringify({
-      _order,
+      ..._query,
+      _search: undefined,
       _page: page
     }) 
     router.push(`${paths.home}?${query}`)
@@ -102,17 +115,41 @@ export function Table (props: TableProps) {
       .filter(([key, value]) => value)
       .map(([key]) => key)
 
-    const _query = qs.stringify({
+    const query = qs.stringify({
+      ..._query,
       _sort: key,
-      _page,
       _order: orderValue,
     })
 
-    router.push(`${paths.home}?${_query}`)
+    router.push(`${paths.home}?${query}`)
   }
 
-  const paginateData = paginate(data, perPage, _page)
+  const handlePushSearchToQuery = useDebounce((value: string) => {
+    const query= qs.stringify({
+      ..._query,
+      _page: 1,
+      _search: value
+    }) 
+    router.push(`${paths.home}?${query}`)
+  }, 300)
+
+  const handleSearchChange = (value: string) => {
+    setSearch(value)
+    handlePushSearchToQuery(value)
+  }
+
+  const filtered = search ? data.filter(value => 
+    isLike(value.nome.toLocaleLowerCase(), search.toLocaleLowerCase())  
+  ) : null
+
+  const paginateData = useMemo(() => 
+    paginate((filtered || data), perPage, _page), 
+  [filtered, data, _page])
+
   const sorted = sortBy(paginateData, (_sort as any), _order as any)
+  
+  const totalResults = filtered?.length || data.length
+  const totalPages = Math.ceil(( totalResults || totalResults) / perPage)
 
   const renderRows = sorted.map((value, index) => (
     <tr key={index}>
@@ -154,7 +191,13 @@ export function Table (props: TableProps) {
 
   return (
     <div className={styles.table__root}>
-      <strong className={styles.table__title}>Classificados por nota</strong>
+      <div className={styles.table__search}>
+        <strong className={styles.table__title}>Classificados por nota</strong>
+        <Search 
+          value={search}
+          onValueChange={handleSearchChange}
+        />
+      </div>
       <div style={{ overflow: 'auto', position: 'relative' }}>
         <table>
           <thead>
@@ -171,7 +214,7 @@ export function Table (props: TableProps) {
         <Pagination 
           currentPage={_page}
           onPageChange={handleChangePage}
-          totalPages={totalPages}
+          totalPages={filtered?.length || totalPages}
         />
       </Box>
     </div>
