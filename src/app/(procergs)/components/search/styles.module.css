@@ -2,6 +2,8 @@
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
+  max-width: 350px;
 }
 
 .search__root input {
@@ -9,7 +11,8 @@
   outline: none;
   background-color: var(--foreground);
   color: var(--ancesst-1);
-  padding: 1rem 1rem 1rem 3rem
+  padding: 1rem 1rem 1rem 3rem;
+  width: 100%
 }
 
 .search__root input::placeholder {
