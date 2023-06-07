@@ -1,6 +1,6 @@
 import { findAll } from '@/services/api'
 import { sortRules } from '@/utils/sortRules'
-import { Search, Table } from './components'
+import { MinMax, Search, Table } from './components'
 import styles from './styles.module.css'
 import { Box } from '@/components'
 
@@ -19,6 +19,7 @@ export default async function Page  () {
       <div className="container">
         <h1 className={styles.home__title}>PROCERGS Concurso 2023</h1>
         <strong className={styles.home__subtitle}>Analista em Computação / ênfase em Desenvolvimento Front-End</strong>
+        <MinMax data={dataAddClassification} />
         <Table data={dataAddClassification} />
       </div>
     </main>

@@ -1,0 +1,10 @@
+.min_max__root {
+  background-color: var(--ancesst-1);
+  padding: 1rem;
+  color: var(--background);
+  border-radius: var(--border-radius);
+}
+
+.min_max__title {
+  font-size: 1.25rem;
+}
