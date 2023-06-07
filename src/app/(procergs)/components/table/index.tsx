@@ -96,7 +96,6 @@ export function Table (props: TableProps) {
   const handleChangePage = (page: number) => {
     const query= qs.stringify({
       ..._query,
-      _search: undefined,
       _page: page
     }) 
     router.push(`${paths.home}?${query}`)
@@ -214,7 +213,7 @@ export function Table (props: TableProps) {
         <Pagination 
           currentPage={_page}
           onPageChange={handleChangePage}
-          totalPages={filtered?.length || totalPages}
+          totalPages={totalPages}
         />
       </Box>
     </div>
