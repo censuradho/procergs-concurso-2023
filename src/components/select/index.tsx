@@ -3,11 +3,14 @@ import * as RadixSelect from '@radix-ui/react-select';
 import { SelectProps } from './types';
 
 import styles from './styles.module.css'
+import { Icon } from '../icons';
 
 export function Select (props: SelectProps) {
   const {
     options,
-    placeholder
+    placeholder,
+    onValueChange,
+    value
   } = props
 
   const renderOptions = options.map((option, index) => (
@@ -22,21 +25,20 @@ export function Select (props: SelectProps) {
     </RadixSelect.Item>
   ))
 
-  console.log(renderOptions)
   return (
     <div className={styles.select__root}>
-      <RadixSelect.Root>
-        <RadixSelect.Trigger 
-          placeholder={placeholder}
-          className={styles.select__trigger}
-        >
-          <RadixSelect.Value />
+      <RadixSelect.Root
+        value={value}
+        onValueChange={onValueChange}
+      >
+        <RadixSelect.Trigger className={styles.select__trigger}>
+          <RadixSelect.Value placeholder={placeholder} />
           <RadixSelect.Icon>
-         
+            <Icon name="arrowDown" />
           </RadixSelect.Icon>
         </RadixSelect.Trigger>
         <RadixSelect.Portal>
-          <RadixSelect.Content>
+          <RadixSelect.Content className={styles.select__content}>
             <RadixSelect.Viewport>
               {renderOptions}
             </RadixSelect.Viewport>

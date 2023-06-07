@@ -1,13 +1,22 @@
-.table {
+.table__root {
   margin: 90px 0
 }
 
 .table__title {
   font-size: 18px;
   font-weight: 500;
+  margin-bottom: 1rem;
+  display: inline-block;
 }
 
 .home__subtitle {
   font-size: 16px;
   font-weight: 400;
+}
+
+.table__content {
+  margin-top: 1.5rem;
+  border-radius: var(--border-radius);
+  background-color: var(--foreground);
+  padding: 1rem
 }

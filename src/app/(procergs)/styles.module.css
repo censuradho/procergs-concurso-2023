@@ -1,5 +1,7 @@
 .home {
-  padding: 60px 24px
+  padding: 60px 24px;
+  color: var(--ancesst-1)
+
 }
 
 .home__title {

@@ -1,5 +1,5 @@
-import { GroupedByTotal } from "@/services/api/types";
+import { Data, GroupedByTotal } from "@/services/api/types";
 
 export interface TableProps {
-  data: GroupedByTotal
+  data: (Data[number] & { classification: number })[]
 }

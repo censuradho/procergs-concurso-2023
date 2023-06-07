@@ -1,7 +1,13 @@
 import {
   RiArrowDownSLine
 } from '@meronex/icons/ri';
+import {
+  RiArrowDropDownFill,
+  RiArrowDropUpFill
+} from '@meronex/icons/ri';
 
 export const icons = {
-  arrowDown: RiArrowDownSLine
+  arrowDown: RiArrowDownSLine,
+  arrowDropDownFill: RiArrowDropDownFill,
+  arrowDropUpFill: RiArrowDropUpFill
 }
