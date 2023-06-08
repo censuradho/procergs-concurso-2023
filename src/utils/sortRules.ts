@@ -2,19 +2,16 @@ import { Data } from "@/services/api/types";
 
 export function sortRules (data: Data) {
   return data.sort((a, b) => {
-    const totalParticipants = data.length
-
     const aLegislacao  = Number(a.legislacao)
     const aPortugues  = Number(a.portugues)
     const aEspecificos  = Number(a.conhecimentos_especificos)
+    const aTotal = Number(a.total)
 
-    const aTotal = (aLegislacao + aPortugues + aEspecificos) - totalParticipants
 
     const bLegislacao  = Number(a.legislacao)
     const bPortugues  = Number(a.portugues)
     const bEspecificos  = Number(a.conhecimentos_especificos)
-
-    const bTotal = (bEspecificos + bLegislacao + bPortugues) - totalParticipants
+    const bTotal = Number(b.total)
 
     if (aTotal !== bTotal) {
       return bTotal - aTotal;
