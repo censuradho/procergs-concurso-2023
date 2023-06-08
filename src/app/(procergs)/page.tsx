@@ -1,8 +1,8 @@
+import { Box } from '@/components'
 import { findAll } from '@/services/api'
 import { sortRules } from '@/utils/sortRules'
-import { MinMax, Search, Table } from './components'
+import { MinMax, Table } from './components'
 import styles from './styles.module.css'
-import { Box } from '@/components'
 
 export const metadata = {
   title: 'PROCERGS Concurso Nº 03/2023 - Ênfase em desenvolvimento Front-End',
