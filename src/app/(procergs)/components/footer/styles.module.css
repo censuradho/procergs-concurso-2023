@@ -1,0 +1,28 @@
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0  1rem;
+  padding-bottom: 2rem;
+}
+
+.footer__list {
+  display: flex;
+  gap: 0.3rem;
+  display: grid;
+}
+
+.footer__list a {
+  color: var(--ancesst-2);
+  font-size: 14px;
+}
+.footer__list_title {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--ancesst-1)
+}
+
+.footer__list a:hover,
+.footer__list a:focus {
+  color: var(--ancesst-1);
+}
