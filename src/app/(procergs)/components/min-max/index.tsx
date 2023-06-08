@@ -22,8 +22,9 @@ export function MinMax (props: MinMaxProps) {
 
   const approvedAmount = approved.length
   const disapprovedAmount = disapproved.length
-  
-  const passRate = ((approvedAmount / disapprovedAmount) * 100).toFixed(2)
+  const participantTotal = data.length
+
+  const passRate = ((approvedAmount / participantTotal) * 100).toFixed(2)
 
   return (
     <section className={styles.min_max__root}>

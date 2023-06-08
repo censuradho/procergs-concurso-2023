@@ -27,13 +27,13 @@
 
 .pagination__bullet {
   font-weight: 500;
-  color: var(--ancesst-1);
+  color: var(--background);
+  font-weight: 600;
   width: 30px;
   height: 30px;
-  background: var(--ancesst-2);
+  background: var(--primary);
   border-radius: 50%;
   border: 1px solid transparent;
-  outline: none;
 }
 .pagination__bullet:hover,
 .pagination__bullet:focus {
