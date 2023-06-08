@@ -2,14 +2,28 @@ import { Data } from "@/services/api/types";
 
 export function sortRules (data: Data) {
   return data.sort((a, b) => {
-    if (Number(a.total) !== Number(b.total)) {
-      return Number(b.total) - Number(a.total);
-    } else if (Number(a.conhecimentos_especificos) !== Number(b.conhecimentos_especificos)) {
-      return Number(b.conhecimentos_especificos) - Number(a.conhecimentos_especificos);
-    } else if (Number(a.portugues) !== Number(b.portugues)) {
-      return Number(b.portugues) - Number(a.portugues);
+    const totalParticipants = data.length
+
+    const aLegislacao  = Number(a.legislacao)
+    const aPortugues  = Number(a.portugues)
+    const aEspecificos  = Number(a.conhecimentos_especificos)
+
+    const aTotal = (aLegislacao + aPortugues + aEspecificos) - totalParticipants
+
+    const bLegislacao  = Number(a.legislacao)
+    const bPortugues  = Number(a.portugues)
+    const bEspecificos  = Number(a.conhecimentos_especificos)
+
+    const bTotal = (bEspecificos + bLegislacao + bPortugues) - totalParticipants
+
+    if (aTotal !== bTotal) {
+      return bTotal - aTotal;
+    } else if (Number(aEspecificos) !== Number(bEspecificos)) {
+      return Number(bEspecificos) - Number(aEspecificos);
+    } else if (Number(aPortugues) !== Number(bPortugues)) {
+      return Number(bPortugues) - Number(aPortugues);
     } else {
-      return Number(b.legislacao) - Number(a.legislacao);
+      return Number(bLegislacao) - Number(aLegislacao);
     }
   })
 }

@@ -20,14 +20,11 @@
   flex-wrap: wrap;
 }
 
-.home__subtitle {
-  font-size: 16px;
-  font-weight: 400;
+.table__td--approved {
+  color: var(--green)
 }
 
-.table__content {
-  margin-top: 1.5rem;
-  border-radius: var(--border-radius);
-  background-color: var(--foreground);
-  padding: 1rem
+
+.table__td--disapproved {
+  color: var(--red)
 }

@@ -12,8 +12,8 @@ export const appSettings = {
   rules: {
     grade: {
       portugues: 5,
-      legislacao: 5,
-      especificas: 20,
+      legislacao: 3,
+      especificas: 22,
     }
   }
 } 

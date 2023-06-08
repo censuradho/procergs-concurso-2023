@@ -12,6 +12,8 @@ import { useSearchParams } from 'next/navigation'
 import { Search } from '../search'
 import { useMemo, useState } from 'react'
 import { useDebounce } from '@/hooks/useDebounce'
+import { appSettings } from '@/config/app'
+import { classNames } from '@/utils/classNames'
 
 const headers = [
   {
@@ -42,6 +44,10 @@ const headers = [
   {
     label: 'Legislação',
     key: 'legislacao'
+  },
+  {
+    label: 'Status',
+    key: 'status'
   }
 ]
 
@@ -150,17 +156,32 @@ export function Table (props: TableProps) {
   const totalResults = filtered?.length || data.length
   const totalPages = Math.ceil(( totalResults || totalResults) / perPage)
 
-  const renderRows = paginateData.map((value, index) => (
-    <tr key={index}>
-      <td>{value.classification}</td>
-      <td>{value.nome}</td>
-      <td>{value.inscricao}</td>
-      <td>{value.total}</td>
-      <td>{value.conhecimentos_especificos}</td>
-      <td>{value.portugues}</td>
-      <td>{value.legislacao}</td>
-    </tr>
-  ))
+  const renderRows = paginateData.map((value, index) => {
+    const approved = 
+      Number(value.legislacao) >= appSettings.rules.grade.legislacao
+      && Number(value.portugues) >= appSettings.rules.grade.portugues
+      && Number(value.conhecimentos_especificos) >= appSettings.rules.grade.especificas
+
+    const approvedLabel = approved ? 'Aprovado' : 'Reprovado'
+    
+    const _class = classNames({
+      [styles['table__td--approved']]: approved,
+      [styles['table__td--disapproved']]: !approved,
+    })
+
+    return (
+      <tr key={index}>
+        <td>{value.classification}</td>
+        <td>{value.nome}</td>
+        <td>{value.inscricao}</td>
+        <td>{value.total}</td>
+        <td>{value.conhecimentos_especificos}</td>
+        <td>{value.portugues}</td>
+        <td>{value.legislacao}</td>
+        <td className={_class}>{approvedLabel}</td>
+      </tr>
+    )
+  })
 
   const renderHeaders = headers.map((value, index) => (
     <td key={index}>

@@ -5,4 +5,6 @@ export const colors = {
   secondary: 'var(--secondary)',
   foreground: 'var(--foreground)',
   background: 'var(--background)',
+  green: 'var(--green)',
+  red: 'var(--red)'
 }
