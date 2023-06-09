@@ -108,11 +108,11 @@ export function Table (props: TableProps) {
   }
 
   const handleSort = (key: string) => {
-    const isDesc = _order === 'desc'
+    const isAsc = _order === 'desc'
 
     const orderParsed = {
-      asc: !isDesc,
-      desc: isDesc
+      asc: isAsc,
+      desc: !isAsc
     }
 
     const [orderValue] = Object
