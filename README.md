@@ -1,3 +1,5 @@
+![image](https://github.com/censuradho/procergs-concurso-2023/assets/49209628/b4aac0fb-aa80-4127-9b98-c158c30c44a7)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
